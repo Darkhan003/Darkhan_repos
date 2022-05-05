@@ -1,0 +1,26 @@
+{% extends 'polls/base.html' %}
+
+{% block content %}
+
+
+
+<h1>Posts</h1>
+
+<ul>
+{% for post in object_list%}
+    <li><a href="{% url 'article-detail' post.pk %}">{{ post.name }}</a>
+        <a href="{% url 'article-detail' post.pk %}">{{ post.surname }}</a>
+        - {{ post.author.first_name }} {{ post.author.last_name }}
+        {{ post.student_id }}
+        {{ post.email }}
+        {{ post.snippet }}
+        <a href="{% url 'update_post' post.pk %}">(Edit)</a>
+        <a href="{% url 'delete_post' post.pk %}">(Delete)</a>
+
+        <br/>
+        {{ post.body }}</li>
+{% endfor %}
+</ul>
+
+
+{% endblock %}
